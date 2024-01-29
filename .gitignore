@@ -1,0 +1,26 @@
+.settings/
+/.idea
+.idea
+.ini
+custom
+*.log
+.DS_Store
+/.vscode
+.vscode
+package-lock.json
+node_modules
+Applications
+Temp
+Templates
+#temp
+*#temp
+desktop.ini
+.eslintrc.js
+# local env files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.eslintcache
+#src/swiper-element-bundle.mjs
+

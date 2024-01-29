@@ -1,0 +1,35 @@
+:root {
+	--pos: left center;
+	--size: 0;
+	--inset-top: 0;
+	--inset-right: 100%;
+	--inset-bottom: 100%;
+	--inset-left: 0;
+}
+//* ------------------------------- [Vareables] --------------------------------
+$minWidth: 320px;
+$maxWidth: 1920px;
+$maxWidthContainer: 1140px;
+$headerHeight: 139px;
+$footerHeight: 680px;
+// -----------------------------------------------------------------------------
+$font-family: 'Roboto', sans-serif;
+$bgColor: #fff;
+$fontColor: #000;
+$textColor: #797979;
+$textColorNotActive: #dadada;
+$FontSize: 12px;
+$font-path: '../fonts';
+// -----------------------------------------------------------------------------
+$blue: #1ab9ce;
+$brown: #584e4a;
+$orange: #f68038;
+$whitey: #c2c2c2;
+$darkcyan: #068292;
+$hover: #31c1d4;
+$BlackShadow: #000;
+$gray: #999;
+$borderGray: #e7e7e7;
+// -----------------------------------------------------------------------------
+$snap: cubic-bezier(1, 0.005, 0.24, 1);
+$bounce: cubic-bezier(0.175, 0.885, 0.32, 1.275);

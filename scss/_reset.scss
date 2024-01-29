@@ -1,0 +1,147 @@
+html,
+body {
+	background-color: $bgColor;
+	counter-reset: heading;
+	// user-select: none;
+	font: {
+		style: normal;
+		size: 62.5%;
+		weight: 400;
+		family: $font-family;
+	}
+	overflow-x: hidden;
+	height: 100%;
+	color: $fontColor;
+	@include _1024 {
+		font-size: 50%;
+	}
+}
+body {
+	font-size: 1.2rem;
+}
+[class*='_container'] {
+	/* border: groove; */
+
+	box-sizing: content-box;
+	max-width: $maxWidthContainer;
+	height: 100%;
+	margin: 0 auto;
+	padding: 0 15px;
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	&:focus {
+		outline: none;
+	}
+}
+
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+a {
+	text-decoration: none;
+	cursor: pointer;
+	color: inherit;
+	&:hover {
+		text-decoration: none;
+	}
+	&:visited {
+		vertical-align: middle;
+		-text-emphasis-style: none;
+	}
+}
+
+input,
+button {
+	border: none;
+}
+
+a:focus,
+a:active,
+input:focus {
+	outline: none;
+}
+
+ol,
+li {
+	list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font: {
+		size: $FontSize;
+		weight: inherit;
+		style: inherit;
+	}
+}
+
+//  * Изменить стиль выделения текста
+::selection {
+	color: #1ab9ce;
+	background-color: #55595c;
+	text-shadow: 0 1px 0 #000;
+}
+
+::-moz-selection {
+	color: #1ab9ce;
+	background-color: #55595c;
+	text-shadow: 0 1px 0 #000;
+}
+
+// * Изменить стиль полосы прокрутки (scrollbar)
+::-webkit-scrollbar {
+	width: 0.9rem;
+	padding: 0.031em;
+}
+
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+	border: 1px solid gray;
+	border-radius: 2px;
+
+	background: {
+		color: #006775;
+		image: -webkit-linear-gradient(
+			45deg,
+			#1ab9ce 25%,
+			transparent 25%,
+			transparent 50%,
+			#1ab9ce 50%,
+			#1ab9ce 75%,
+			transparent 75%,
+			transparent
+		);
+	}
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: {
+		color: #1ab9ce;
+		image: -webkit-linear-gradient(
+			45deg,
+			#006775 25%,
+			transparent 25%,
+			transparent 50%,
+			#006775 50%,
+			#006775 75%,
+			transparent 75%,
+			transparent
+		);
+	}
+}

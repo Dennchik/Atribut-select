@@ -1,0 +1,176 @@
+@import 'mixins';
+@import 'variables';
+@import 'variables-icon';
+// -----------------------------------------------------------------------------
+@import 'iconstyle';
+// -----------------------------------------------------------------------------
+@import 'fonts';
+@import 'reset';
+//todo  ------------------- Шрифт по умолчанию ---------------------------------
+// &display=swap&subset=cyrillic-ext
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,regular,400,500,700&display=swap&subset=cyrillic-ext);
+
+@import url(https://fonts.googleapis.com/css?family=Play:regular,400,700&display=swap&subset=cyrillic-ext);
+//* ------------------------------ [Select]-------------------------------------
+.select > ._collapse:not(._show) {
+	display: none;
+}
+//* ----------------------------------------------------------------------------
+.header {
+	margin: 30px 0;
+	h1 {
+		font: {
+			size: 32px;
+		}
+	}
+
+	&__title {
+		font-style: 22px;
+		font-weight: 700;
+		margin-top: 1em;
+		margin-bottom: 1em;
+	}
+}
+
+.block {
+	margin-bottom: 300px;
+}
+.page {
+	@include flex-align-center-justify-space-between;
+	gap: 3rem;
+	margin-bottom: 30px;
+
+	// .page__form-group
+	&__form-group {
+		flex: 1 1 50%;
+	}
+
+	// .page__dropdown
+	&__dropdown {
+		position: relative;
+		height: 100%;
+	}
+}
+.icon-arrow_select {
+	pointer-events: none;
+}
+.select {
+	&._active-collapse {
+		.icon-arrow_select {
+			scale: -1;
+			color: #f68038;
+		}
+	}
+
+	// .select__box-button
+	&__box-button {
+		position: relative;
+		@include flex-align-center;
+		.icon-arrow_select {
+			position: absolute;
+
+			right: 0;
+			color: #333;
+
+			transform: rotate(90deg);
+			transition: all 0.3s ease-in-out;
+			&::before {
+				display: flex;
+				align-items: center;
+				position: relative;
+				width: 22px;
+				height: 22px;
+				font-size: 2rem;
+			}
+
+			z-index: 0;
+		}
+		input {
+			font-size: 1.4rem;
+		}
+	}
+
+	// .dropdown__button
+	&__button {
+		position: relative;
+		display: block;
+		width: 100%;
+		text-align: left;
+
+		background: #ffffff;
+		border: 1px solid #7e9bbd;
+		border-radius: 6px;
+		height: 46px;
+
+		padding-top: 13px;
+		padding-bottom: 13px;
+		padding-left: 20px;
+		padding-right: 35px;
+
+		font-weight: 500;
+		font-size: 16px;
+		line-height: 20px;
+
+		cursor: pointer;
+
+		&:focus {
+			outline: none;
+			box-shadow: 0px 0px 0px 4px rgba(176, 198, 225, 0.6);
+		}
+	}
+
+	// .dropdown__list
+	&__list {
+		white-space: nowrap;
+
+		position: absolute;
+		left: 0;
+		top: 52px;
+
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
+
+		background: #ffffff;
+		box-shadow: 0px 4px 8px rgba(176, 198, 225, 0.6);
+		overflow: hidden;
+
+		border-radius: 6px;
+		width: 100%;
+
+		z-index: 10;
+	}
+
+	// .dropdown__list-item
+	&__list-item {
+		margin: 0;
+		padding: 0;
+		border: 1px solid #7e9bbd;
+		border-bottom: 0px;
+		padding: 13px 20px;
+		cursor: pointer;
+
+		&:focus {
+			background: rgba(185, 142, 102, 0.719);
+		}
+		&:hover {
+			background: rgba(176, 198, 225, 0.26);
+			color: #f68038;
+		}
+		&:first-child {
+			border-radius: 6px 6px 0 0;
+		}
+		&:last-child {
+			border-radius: 0 0 6px 6px;
+			border-bottom: 1px solid #7e9bbd;
+		}
+		&._selected {
+			background-color: #72c9d4;
+			color: #fff;
+		}
+		&._selected-two {
+			background-color: #72c9d4;
+			color: #fff;
+		}
+	}
+}
