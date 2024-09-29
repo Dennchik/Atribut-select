@@ -1,59 +1,60 @@
-@import 'mixins';
-@import 'variables';
-@import 'variables-icon';
-// -----------------------------------------------------------------------------
-@import 'iconstyle';
-// -----------------------------------------------------------------------------
-@import 'fonts';
-@import 'reset';
 //todo  ------------------- Шрифт по умолчанию ---------------------------------
 // &display=swap&subset=cyrillic-ext
 @import url(https://fonts.googleapis.com/css?family=Roboto:300,regular,400,500,700&display=swap&subset=cyrillic-ext);
 
-@import url(https://fonts.googleapis.com/css?family=Play:regular,400,700&display=swap&subset=cyrillic-ext);
-//* ------------------------------ [Select]-------------------------------------
-.select > ._collapse:not(._show) {
-	display: none;
+//! ------------------------------ [Page] --------------------------------------
+
+.page {
+	// .page__column
+	&__column {
+		margin-bottom: 150px;
+	}
 }
-//* ----------------------------------------------------------------------------
+//! ------------------------------ [Header]-------------------------------------
 .header {
 	margin: 30px 0;
 	h1 {
+		color: #00e1ff;
 		font: {
-			size: 32px;
+			size: 44px;
+			weight: 700;
 		}
 	}
 
 	&__title {
-		font-style: 22px;
-		font-weight: 700;
+		color: #1a2425;
+		font-size: 22px;
+		font-weight: 500;
 		margin-top: 1em;
 		margin-bottom: 1em;
 	}
 }
+// -----------------------------------------------------------------------------
+@import 'mixins';
+@import 'variables';
+@import 'variables-icon';
+@import 'reset';
+@import 'iconstyle';
 
-.block {
-	margin-bottom: 300px;
+//! ------------------------------ [Select]-------------------------------------
+.select > ._collapse:not(._show) {
+	display: none;
 }
-.page {
+//* ----------------------------------------------------------------------------
+.select-group {
+	flex: 1 1 50%;
+	gap: 30px;
+
 	@include flex-align-center-justify-space-between;
-	gap: 3rem;
-	margin-bottom: 30px;
 
-	// .page__form-group
-	&__form-group {
-		flex: 1 1 50%;
-	}
-
-	// .page__dropdown
+	// .select-group__dropdown
 	&__dropdown {
 		position: relative;
+		width: 100%;
 		height: 100%;
 	}
 }
-.icon-arrow_select {
-	pointer-events: none;
-}
+
 .select {
 	&._active-collapse {
 		.icon-arrow_select {
@@ -61,19 +62,28 @@
 			color: #f68038;
 		}
 	}
-
-	// .select__box-button
-	&__box-button {
+	// .select__button
+	&__button {
+		cursor: pointer;
 		position: relative;
-		@include flex-align-center;
+		width: 100%;
+		border-radius: 10px;
+
+		background: #ffffff;
+		border: 1px solid #7e9bbd;
+
+		input {
+			font-size: 16px;
+		}
+
 		.icon-arrow_select {
 			position: absolute;
-
 			right: 0;
 			color: #333;
-
 			transform: rotate(90deg);
 			transition: all 0.3s ease-in-out;
+			z-index: 0;
+
 			&::before {
 				display: flex;
 				align-items: center;
@@ -82,24 +92,24 @@
 				height: 22px;
 				font-size: 2rem;
 			}
+		}
 
-			z-index: 0;
+		&:focus {
+			outline: none;
+			box-shadow: 0px 0px 0px 2px rgb(114, 200, 212);
 		}
-		input {
-			font-size: 1.4rem;
-		}
+		@include flex-align-center-justify-space-between;
 	}
 
-	// .dropdown__button
-	&__button {
+	// .select__input
+
+	&__input {
+		pointer-events: none;
 		position: relative;
 		display: block;
 		width: 100%;
 		text-align: left;
 
-		background: #ffffff;
-		border: 1px solid #7e9bbd;
-		border-radius: 6px;
 		height: 46px;
 
 		padding-top: 13px;
@@ -110,16 +120,9 @@
 		font-weight: 500;
 		font-size: 16px;
 		line-height: 20px;
-
-		cursor: pointer;
-
-		&:focus {
-			outline: none;
-			box-shadow: 0px 0px 0px 4px rgba(176, 198, 225, 0.6);
-		}
 	}
 
-	// .dropdown__list
+	// .select__list
 	&__list {
 		white-space: nowrap;
 
@@ -132,7 +135,7 @@
 		list-style-type: none;
 
 		background: #ffffff;
-		box-shadow: 0px 4px 8px rgba(176, 198, 225, 0.6);
+		box-shadow: 0px 0px 0px 2px rgb(114, 200, 212);
 		overflow: hidden;
 
 		border-radius: 6px;
@@ -141,7 +144,7 @@
 		z-index: 10;
 	}
 
-	// .dropdown__list-item
+	// .select__list-item
 	&__list-item {
 		margin: 0;
 		padding: 0;
