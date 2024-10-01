@@ -6,39 +6,6 @@ document.querySelectorAll('[data-select]').forEach(function (selectGroup) {
 			const selectButton = itsSelect.querySelector('.select__button');
 			let start = listItems[0]; // Инициализация переменной `start`
 
-			// Функция для переключения активного элемента
-			const selectNext = (sibling) => {
-				if (sibling !== null) {
-					start.classList.remove('_selected');
-					sibling.focus();
-					sibling.classList.add('_selected');
-					start = sibling;
-				}
-			};
-
-			// Переключатель классов
-			const _toggleOpen = (el) => {
-				const collapse = new ItcCollapse(el.closest('.select').querySelector('._collapse'));
-				if (el.classList.contains('_active-collapse')) {
-					el.classList.remove('_active-collapse');
-					collapse.toggle();
-				} else {
-					el.classList.add('_active-collapse');
-					collapse.toggle();
-				}
-			};
-
-			// Закрытие всех дропдаунов
-			const closeBos = () => {
-				const dropDown = document.querySelectorAll('.select');
-				dropDown.forEach(el => {
-					if (el.classList.contains('_active-collapse')) {
-						_toggleOpen(el);
-					}
-				});
-			};
-
-
 			itsSelect.addEventListener('click', function (e) {
 				let target = e.target;
 
@@ -54,23 +21,6 @@ document.querySelectorAll('[data-select]').forEach(function (selectGroup) {
 
 				if (!target.closest('.select').classList.contains('_active-collapse')) {
 					selectButton.blur();
-				}
-			});
-
-			// Работа с клавишами
-			selectGroup.addEventListener('keydown', function (e) {
-				if (['ArrowUp', 'ArrowDown', 'Enter'].includes(e.key)) e.preventDefault();
-
-				if (e.key == 'ArrowUp') {
-					let sibling = start.previousElementSibling || listItems[listItems.length - 1]; // Если нет предыдущего, выбираем последний элемент
-					selectNext(sibling);
-				} else if (e.key == 'ArrowDown') {
-					let sibling = start.nextElementSibling || listItems[0]; // Если нет следующего, выбираем первый элемент
-					selectNext(sibling);
-				} else if (e.key == 'Enter') {
-					const selectedIndex = Array.from(listItems).indexOf(start);
-					selectValue(selectedIndex);
-					closeBos();
 				}
 			});
 
@@ -129,6 +79,47 @@ document.querySelectorAll('[data-select]').forEach(function (selectGroup) {
 				};
 			}
 
+			// Работа с клавишами
+			selectGroup.addEventListener('keydown', function (e) {
+				if (['ArrowUp', 'ArrowDown', 'Enter'].includes(e.key)) {
+					e.preventDefault();
+				}
+
+				if (e.key == 'ArrowUp') {
+					let sibling = start.previousElementSibling || listItems[listItems.length - 1]; // Если нет предыдущего, выбираем последний элемент
+					selectNext(sibling);
+				} else if (e.key == 'ArrowDown') {
+					let sibling = start.nextElementSibling || listItems[0]; // Если нет следующего, выбираем первый элемент
+					selectNext(sibling);
+				} else if (e.key == 'Enter') {
+					const selectedIndex = Array.from(listItems).indexOf(start);
+					selectValue(selectedIndex);
+					closeBos();
+				}
+			});
+
+			// Функция для переключения активного элемента
+			function selectNext(sibling) {
+				if (sibling !== null) {
+					start.classList.remove('_selected');
+					sibling.focus();
+					sibling.classList.add('_selected');
+					start = sibling;
+				}
+			}
+
+			// Переключатель классов
+			const _toggleOpen = (el) => {
+				const collapse = new ItcCollapse(el.closest('.select').querySelector('._collapse'));
+				if (el.classList.contains('_active-collapse')) {
+					el.classList.remove('_active-collapse');
+					collapse.toggle();
+				} else {
+					el.classList.add('_active-collapse');
+					collapse.toggle();
+				}
+			};
+
 			// Закрыть дропдаун при нажатии Tab или Escape
 			document.addEventListener('keydown', function (el) {
 				if (el.key === 'Tab' || el.key === 'Escape') {
@@ -150,6 +141,16 @@ document.querySelectorAll('[data-select]').forEach(function (selectGroup) {
 						break;
 				};
 			});
+
+			// Закрытие всех дропдаунов
+			function closeBos() {
+				const dropDown = document.querySelectorAll('.select');
+				dropDown.forEach(el => {
+					if (el.classList.contains('_active-collapse')) {
+						_toggleOpen(el);
+					}
+				});
+			}
 		});
 	}
 });
