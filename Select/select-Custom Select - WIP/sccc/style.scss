@@ -1,0 +1,134 @@
+body {
+	position: absolute;
+	width: 100%;
+	min-height: 100%;
+	background-color: #ddd9ce;
+}
+
+.custom-select {
+	position: relative;
+	width: 150px;
+	padding: 1.5rem;
+	margin-right: auto;
+	margin-left: auto;
+	font-family: sans-serif;
+	color: white;
+	background-color: #996b33;
+	cursor: pointer;
+}
+
+.custom-select__icon {
+	height: 1rem;
+	width: 1rem;
+	vertical-align: middle;
+
+	img {
+		height: 1rem;
+		width: 1rem;
+	}
+}
+
+.custom-select__label {
+	margin-left: 10px;
+	vertical-align: middle;
+
+	&:before,
+	&:after {
+		content: '';
+		position: absolute;
+		top: 50%;
+		width: 10px;
+		height: 2px;
+		background-color: white;
+	}
+
+	&:before {
+		right: 1.5em;
+		transform: translate(-25%, -50%) rotate(45deg);
+	}
+
+	&:after {
+		right: 1.5em;
+		transform: translate(25%, -50%) rotate(-45deg);
+	}
+}
+
+.custom-select__option-container {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	margin-top: 10px;
+	width: 100%;
+	height: auto;
+	background-color: white;
+	transform: rotateY(180deg);
+	transition: transform 295ms ease-in-out;
+	backface-visibility: hidden;
+
+	&.is-open {
+		transform: rotateY(360deg);
+	}
+}
+
+.custom-select__inner {
+	position: relative;
+
+	&:before {
+		content: '';
+		position: absolute;
+		bottom: 100%;
+		left: 50%;
+		width: 0;
+		height: 0;
+		border-left: 20px solid transparent;
+		border-right: 20px solid transparent;
+		border-bottom: 20px solid white;
+		transform: translateX(-50%);
+	}
+}
+
+.custom-select__option {
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 1.2em;
+	color: lighten(#383b45, 30);
+
+	&:after {
+		content: '';
+		position: absolute;
+		top: 100%;
+		right: 20px;
+		left: 20px;
+		height: 1px;
+		background-color: lighten(#383b45, 50);
+	}
+
+	&:last-child:after {
+		display: none;
+	}
+}
+
+input[type='checkbox'] {
+	appearance: none;
+	position: relative;
+	width: 20px;
+	height: 20px;
+	border: 1px solid lighten(#383b45, 50);
+}
+
+input[type='checkbox']:checked {
+	&:after {
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 13px;
+		height: 7px;
+		border: none;
+		border-bottom: 3px solid lighten(#383b45, 50);
+		border-left: 3px solid lighten(#383b45, 50);
+		transform: translate(-50%, -75%) rotate(-45deg);
+	}
+}

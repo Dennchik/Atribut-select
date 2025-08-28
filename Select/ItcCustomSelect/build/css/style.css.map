@@ -1,0 +1,1 @@
+{"version":3,"sources":["style.scss"],"names":[],"mappings":"AAAA;EACC;;;AAGD;EACC;EACA;EACA","file":"style.css","sourcesContent":["body {\r\n\tfont-family: 'Roboto', sans-serif;\r\n}\r\n\r\n.container {\r\n\tmax-width: 250px;\r\n\tmargin-left: auto;\r\n\tmargin-right: auto;\r\n}"]}

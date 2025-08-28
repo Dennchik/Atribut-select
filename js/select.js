@@ -1,4 +1,7 @@
-document.querySelectorAll('[data-select]').forEach(function (selectGroup) {
+document.querySelectorAll('[data-select]').forEach(function
+	(selectGroup) {
+	console.log(selectGroup);
+
 	const itsSelects = selectGroup.querySelectorAll('.select');
 	if (itsSelects) {
 		itsSelects.forEach((itsSelect, selectIndex) => {

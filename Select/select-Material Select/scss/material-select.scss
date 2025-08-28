@@ -1,0 +1,211 @@
+// Styles from Material Style Guide: https://shopdirect.invisionapp.com/share/95C408MX3#/screens/239986077
+
+// UI Colours
+$primary-green-light: #f3ffee;
+$primary-green-medium: #00c853;
+$primary-green-dark: #00864c;
+
+$secondary-blue-light: #eff9ff;
+$secondary-blue-medium: #0091ea;
+$secondary-blue-dark: #006ab8;
+
+$error-red-light: #fcf0f2;
+$error-red-medium: #ff1744;
+$error-red-dark: #c30000;
+
+$moderate-orange-light: #ffefe2;
+$moderate-orange-medium: #ff6d00;
+$moderate-orange-dark: #a23b00;
+
+$warning-yellow-light: #fffcee;
+$warning-yellow-medium: #ffd600;
+$warning-yellow-dark: #a95b00;
+
+$grey-dark: #333;
+$grey-medium: #616161;
+$grey-outline: #e0e0e0;
+$grey-custom-outline: #c2c2c2;
+$grey-off-white: #f5f5f5;
+
+// Very
+$very-light: #f5b2d7;
+$very-medium: #de007b;
+$very-dark: #ac0052;
+
+/* Color palette */
+$text-color: $grey-dark;
+$text-blue: #069;
+
+$text-link-color: #e5390e;
+$text-link-hover-color: #d16500;
+$text-link-blue: #33a417;
+
+$very-brand-pink: $very-medium;
+$lawn-green: #579d0a;
+$boarder-blue: #98c4cd;
+$fill-blue: #bee1f3;
+$error-red: #dc3545;
+$check-icon: 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaGVpZ2h0PSIxNXB4IiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAxOCAxNSIgd2lkdGg9IjE4cHgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6c2tldGNoPSJodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2gvbnMiIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48dGl0bGUvPjxkZXNjLz48ZGVmcy8+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIiBpZD0iUGFnZS0xIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSI+PGcgZmlsbD0iIzAwMDAwMCIgaWQ9IkNvcmUiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC00MjMuMDAwMDAwLCAtNDcuMDAwMDAwKSI+PGcgaWQ9ImNoZWNrIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0MjMuMDAwMDAwLCA0Ny41MDAwMDApIj48cGF0aCBkPSJNNiwxMC4yIEwxLjgsNiBMMC40LDcuNCBMNiwxMyBMMTgsMSBMMTYuNiwtMC40IEw2LDEwLjIgWiIgaWQ9IlNoYXBlIi8+PC9nPjwvZz48L2c+PC9zdmc+';
+
+$material-select-animation: all 0.3s ease-out;
+// grid
+$grid-columns-count: 6;
+$grid-gutter: 8px;
+$page-padding: $grid-gutter * 2;
+$page-padding-negative: -1 * $page-padding;
+$passive-color: $grey-medium;
+$active-color: $very-medium;
+$complete-color: $grey-dark;
+$invalid-color: $error-red-medium;
+$valid-color: $primary-green-medium;
+$page-bg: #fff;
+
+@mixin material-select() {
+	box-sizing: border-box;
+	position: relative;
+	margin: 0 0 ($grid-gutter * 3);
+	font-size: 14px;
+	height: 40px;
+	border: 1px solid $passive-color;
+	border-radius: 2px;
+	width: 100%;
+	background: none;
+	color: $passive-color;
+	text-indent: 0; // to override unnecessarybinherited styles
+	line-height: normal;
+	transition: $material-select-animation;
+	+ p {
+		color: $invalid-color;
+		margin: 4px 0 0 16px;
+	}
+
+	select {
+		padding: $grid-gutter $grid-gutter $grid-gutter $grid-gutter * 2;
+		width: 100%;
+		border: none;
+		font-size: 14px;
+		height: 40px; // set height equal parent height
+		box-shadow: none;
+		background: transparent;
+		background-image: none;
+		appearance: none;
+		color: transparent;
+		margin-bottom: 0; /* overwrite global styles */
+		option {
+			&:hover {
+				// background-color: rgba($active-color, 0.1);
+			}
+			&:checked {
+				background-color: rgba($complete-color, 0.1);
+			}
+		}
+		&:focus {
+			outline: none;
+			color: $complete-color;
+			~ label {
+				top: -0.5em;
+			}
+		}
+	}
+
+	label {
+		position: absolute;
+		top: 1em;
+		pointer-events: none;
+		left: $grid-gutter;
+		margin: 0 !important; // to override unnecessarybinherited styles
+		color: $passive-color;
+		background: $page-bg;
+		transition: $material-select-animation;
+		overflow: visible; /* overwrite global styles */
+		line-height: 1; /* overwrite global styles */
+		&:before,
+		&:after {
+			content: '';
+			padding: ($grid-gutter / 2);
+		}
+	}
+
+	&:after {
+		content: '';
+		display: block;
+		text-align: center;
+		position: absolute;
+		top: 17px;
+		right: $grid-gutter;
+		border-width: 6px 7px;
+		border-style: solid;
+		border-color: transparent;
+		border-top-color: $passive-color;
+		pointer-events: none;
+	}
+
+	&.is-checked-always,
+	&.is-checked {
+		border-color: $complete-color;
+		select {
+			color: $complete-color;
+		}
+		label {
+			top: -0.5em;
+			color: $complete-color;
+			background: $page-bg;
+		}
+	}
+
+	&.is-focused {
+		border-color: $active-color;
+		color: $complete-color;
+		select {
+			color: $complete-color;
+		}
+		label {
+			top: -0.5em;
+			color: $active-color;
+			background: $page-bg;
+		}
+	}
+
+	&.is-error {
+		border-color: $invalid-color;
+		select {
+			color: $invalid-color;
+		}
+		label {
+			color: $invalid-color;
+		}
+	}
+
+	&.is-valid {
+		border-color: $valid-color;
+		select {
+			color: $valid-color;
+		}
+		label {
+			color: $valid-color;
+		}
+	}
+
+	&.is-approved {
+		position: relative;
+		&:after {
+			content: '';
+			display: block;
+			width: 1em;
+			height: 1em;
+			position: absolute;
+			top: 50%;
+			right: $grid-gutter * 2;
+			transform: translateY(-50%);
+			background-repeat: no-repeat;
+			background-size: contain;
+			background-position: center;
+			background-image: url($check-icon);
+		}
+	}
+}
+
+.material-select {
+	@include material-select();
+	max-width: 300px;
+}
